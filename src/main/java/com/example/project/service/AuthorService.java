@@ -40,4 +40,8 @@ public class AuthorService {
             throw new NotFoundException("Book not found with id: " + authorId);
         }
     }
+
+    private void deleteAuthor(Long authorId) {
+        authorRepository.deleteById(authorId);
+    }
 }
