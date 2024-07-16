@@ -28,6 +28,17 @@ public class BookService {
     }
 
 
-
-
+    private void updateBook(Long bookId, Book updateBook) {
+        Optional<Book> bookOptional = findBookById(bookId);
+        if (bookOptional.isPresent()) {
+            Book book = bookOptional.get();
+            book.setAuthor(updateBook.getAuthor());
+            book.setTitle(updateBook.getTitle());
+            book.setGenre(updateBook.getGenre());
+            book.setDateOfPublication(updateBook.getDateOfPublication());
+            createdBook(book);
+        } else {
+            throw new NotFoundException("Book not found with id: " + bookId);
+        }
+    }
 }
