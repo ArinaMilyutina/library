@@ -41,4 +41,12 @@ public class BookService {
             throw new NotFoundException("Book not found with id: " + bookId);
         }
     }
+    private void deleteBook(Long bookId){
+        Optional<Book> bookOptional=findBookById(bookId);
+        if(bookOptional.isPresent()){
+            bookRepository.deleteById(bookId);
+        }else {
+            throw new NotFoundException("Book not found with id: " + bookId);
+        }
+    }
 }
