@@ -1,7 +1,6 @@
 package com.example.project.service;
 
 import com.example.project.entity.Author;
-import com.example.project.entity.Book;
 import com.example.project.exception.NotFoundException;
 import com.example.project.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
