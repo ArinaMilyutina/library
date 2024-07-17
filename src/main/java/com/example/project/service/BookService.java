@@ -40,28 +40,18 @@ public class BookService {
     }
 
     public Optional<Book> findBookById(Long bookId) throws NotFoundException {
-        Optional<Book> book=bookRepository.findById(bookId);
-        if(book.isEmpty()){
-            throw new NotFoundException("The book with this id was not found.");
-        }
-
-        return book;
+        return Optional.ofNullable(bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("The book with this id was not found.")));
     }
 
 
-//    public void updateBook(Long bookId, Book updateBook) {
-//        Optional<Book> bookOptional = findBookById(bookId);
-//        if (bookOptional.isPresent()) {
-//            Book book = bookOptional.get();
-//            book.setAuthor(updateBook.getAuthor());
-//            book.setTitle(updateBook.getTitle());
-//            book.setGenre(updateBook.getGenre());
-//            book.setDateOfPublication(updateBook.getDateOfPublication());
-//            createdBook(book);
-//        } else {
-//            throw new NotFoundException("Book not found with id: " + bookId);
-//        }
-//    }
+    public Book updateBook(Long bookId, BookDto bookDto) throws NotFoundException {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("The book with is id was not found."));
+        book.setTitle(bookDto.getTitle());
+        book.setGenre(bookDto.getGenre());
+        book.setPublicationDate(bookDto.getPublicationDate());
+        book.setAuthor(bookDto.getAuthor());
+        return bookRepository.save(book);
+    }
 
 //    public void deleteBook(Long bookId) {
 //        Optional<Book> bookOptional = findBookById(bookId);
