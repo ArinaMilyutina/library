@@ -33,4 +33,9 @@ public class BookController {
         List<Book> books = bookService.findAll();
         return ResponseEntity.of(Optional.ofNullable(books));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> findBookById(@PathVariable Long id) throws NotFoundException {
+        Optional<Book> book = bookService.findBookById(id);
+        return ResponseEntity.of(book);
+    }
 }
