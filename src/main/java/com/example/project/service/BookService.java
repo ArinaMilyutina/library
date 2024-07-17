@@ -10,7 +10,6 @@ import com.example.project.exception.NotFoundException;
 import com.example.project.repository.AuthorRepository;
 import com.example.project.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,19 +62,18 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-}
 
-//    public void deleteBook(Long bookId) {
-//        Optional<Book> bookOptional = findBookById(bookId);
-//        if (bookOptional.isPresent()) {
-//            bookRepository.deleteById(bookId);
-//        } else {
-//            throw new NotFoundException("Book not found with id: " + bookId);
-//        }
-//    }
+    public boolean deleteBook(Long bookId) throws NotFoundException {
+        if (!bookRepository.existsById(bookId)) {
+            throw new NotFoundException("Book not found.");
+        }
+        bookRepository.deleteById(bookId);
+        return false;
+    }
+
 
 //        public List<Book> findByAuthorId (Long authorId){
 //            return bookRepository.findByAuthorId(authorId);
 //        }
-
+}
 
