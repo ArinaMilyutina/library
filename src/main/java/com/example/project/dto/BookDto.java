@@ -27,5 +27,4 @@ public class BookDto {
     private LocalDate publicationDate;
     @NotNull(message = "Author iD is mandatory.")
     private Long authorId;
-    private Author author;
 }
