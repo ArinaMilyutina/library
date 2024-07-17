@@ -1,7 +1,4 @@
 package com.example.project.exception;
 
-public class AuthorNotFoundException extends Throwable {
-    public AuthorNotFoundException(String message) {
-        super(message);
-    }
+public class AuthorNotFoundException extends Exception {
 }
