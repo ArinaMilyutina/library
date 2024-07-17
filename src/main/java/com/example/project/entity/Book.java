@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Book extends AbstractEntity {
     private String title;
     private String genre;
-    private LocalDate dateOfPublication;
+    private LocalDate publicationDate;
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
