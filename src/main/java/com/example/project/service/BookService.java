@@ -24,7 +24,7 @@ public class BookService {
         Book book = Book.builder()
                 .title(bookDto.getTitle())
                 .genre(bookDto.getGenre())
-                .dateOfPublication(bookDto.getDateOfPublication())
+                .publicationDate(bookDto.getPublicationDate())
                 .author(author)
                 .build();
         return bookRepository.save(book);
