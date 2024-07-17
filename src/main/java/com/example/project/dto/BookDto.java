@@ -17,7 +17,7 @@ public class BookDto {
     @Size(max = 100,message = "Genre must be less than 100 characters.")
     private String genre;
     @NotNull(message = "Publication date is mandatory.")
-    private LocalDate dateOfPublication;
+    private LocalDate publicationDate;
     @NotNull(message = "Author iD is mandatory.")
     private Long authorId;
 }
