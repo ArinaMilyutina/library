@@ -31,12 +31,21 @@ public class BookService {
 
     }
 
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public List<Book> findAll() throws NotFoundException {
+        List<Book> books = bookRepository.findAll();
+        if (books.isEmpty()) {
+            throw new NotFoundException("There are no books.");
+        }
+        return books;
     }
 
-    public Optional<Book> findBookById(Long bookId) {
-        return bookRepository.findById(bookId);
+    public Optional<Book> findBookById(Long bookId) throws NotFoundException {
+        Optional<Book> book=bookRepository.findById(bookId);
+        if(book.isEmpty()){
+            throw new NotFoundException("The book with this id was not found.");
+        }
+
+        return book;
     }
 
 
@@ -54,14 +63,14 @@ public class BookService {
 //        }
 //    }
 
-    public void deleteBook(Long bookId) {
-        Optional<Book> bookOptional = findBookById(bookId);
-        if (bookOptional.isPresent()) {
-            bookRepository.deleteById(bookId);
-        } else {
-            throw new NotFoundException("Book not found with id: " + bookId);
-        }
-    }
+//    public void deleteBook(Long bookId) {
+//        Optional<Book> bookOptional = findBookById(bookId);
+//        if (bookOptional.isPresent()) {
+//            bookRepository.deleteById(bookId);
+//        } else {
+//            throw new NotFoundException("Book not found with id: " + bookId);
+//        }
+//    }
 
     public List<Book> findByAuthorId(Long authorId) {
         return bookRepository.findByAuthorId(authorId);
