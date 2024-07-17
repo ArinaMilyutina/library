@@ -1,14 +1,21 @@
 package com.example.project.dto;
 
 
+import com.example.project.entity.Author;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookDto {
     @NotBlank (message = "Title is mandatory.")
     @Size(max = 255,message = "Title must be less than 255 characters.")
@@ -20,4 +27,5 @@ public class BookDto {
     private LocalDate publicationDate;
     @NotNull(message = "Author iD is mandatory.")
     private Long authorId;
+    private Author author;
 }
