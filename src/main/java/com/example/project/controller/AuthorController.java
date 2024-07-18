@@ -34,4 +34,10 @@ public class AuthorController {
         return ResponseEntity.of(Optional.ofNullable(authors));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Author> findAuthorById(@PathVariable Long id) throws NotFoundException {
+        Optional<Author> author = authorService.findById(id);
+        return ResponseEntity.of(author);
+    }
+
 }

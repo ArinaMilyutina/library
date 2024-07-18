@@ -33,8 +33,8 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public Optional<Author> findById(Long authorId) {
-        return authorRepository.findById(authorId);
+    public Optional<Author> findById(Long authorId) throws NotFoundException {
+        return Optional.ofNullable(authorRepository.findById(authorId).orElseThrow(() -> new NotFoundException("Author not found.")));
     }
 
 //    private void updateAuthor(Long authorId, Author updateAuthor) {
