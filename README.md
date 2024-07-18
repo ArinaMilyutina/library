@@ -2,7 +2,7 @@
 
 Система управления библиотекой предназначена для управления информациекй о книгах и их авторах. Система позволяет
 добавлять, обновлять, удалять и просматривать информацию о книгах и авторах.
-**Проект использует следующие зависимости:**Spring Boot Starter Data JPA,Spring Boot Starter Data REST,Spring Boot Starter
+**Проект использует следующие зависимости:** Spring Boot Starter Data JPA,Spring Boot Starter Data REST,Spring Boot Starter
 Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring Boot Starter Test.
 **Порядок запуска приложения:**
 1. Откройте приложение Intellij IDEA
