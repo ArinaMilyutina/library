@@ -1,17 +1,19 @@
-#Система управления библиотекоой
-#Система управления библиотекой предназначена для управления информациекй о книгах и их авторах. Система позволяет
-добавлять, обновлять, удалять и просматривать информацию о книгах и авторах.
-Проект использует следующие зависимости:Spring Boot Starter Data JPA,Spring Boot Starter Data REST,Spring Boot Starter
-Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring Boot Starter Test.
-Порядок запуска приложения:
+# ******Система управления библиотекоой******
 
+Система управления библиотекой предназначена для управления информациекй о книгах и их авторах. Система позволяет
+добавлять, обновлять, удалять и просматривать информацию о книгах и авторах.
+**Проект использует следующие зависимости:**Spring Boot Starter Data JPA,Spring Boot Starter Data REST,Spring Boot Starter
+Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring Boot Starter Test.
+**Порядок запуска приложения:**
 1. Откройте приложение Intellij IDEA
 2. Клонируйте проект: git clone <URL-репозитория>
 3. Перейдите в корневую директорию проекта: cd <имя_проекта>
 4. Перейдите на ветку master, так как проект находится там:git checkout master
 5. Запустите проект.
 6. Приложение запустится на стандартном порту 8080.
-   #Коллекция запросов для тестирования REST API (Postman)
+
+#    **Коллекция запросов для тестирования REST API (Postman)**
+
 1. Создание автора (метод:POST, URL:http://localhost:8080/api/authors):
    json:
    {
