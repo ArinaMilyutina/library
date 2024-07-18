@@ -1,6 +1,8 @@
 package com.example.project.service;
 
+import com.example.project.dto.AuthorDto;
 import com.example.project.entity.Author;
+import com.example.project.exception.NotFoundException;
 import com.example.project.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +15,25 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    private void createdAuthor(Author author) {
-        authorRepository.save(author);
+    public Author createdAuthor(AuthorDto authorDto) {
+        Author author = Author.builder()
+                .name(authorDto.getName())
+                .surname(authorDto.getSurname())
+                .birthDate(authorDto.getBirthDate())
+                .build();
+        return authorRepository.save(author);
+
     }
 
-    private List<Author> findAll() {
-        return authorRepository.findAll();
-    }
+//    public List<Author> findAll() throws NotFoundException {
+//        List<Author> authorList = authorRepository.findAll();
+//        if (authorList.isEmpty()) {
+//            throw new NotFoundException("There are no authors.");
+//        }
+//        return authorRepository.findAll();
+//    }
 
-    private Optional<Author> findById(Long authorId) {
+    public Optional<Author> findById(Long authorId) {
         return authorRepository.findById(authorId);
     }
 
