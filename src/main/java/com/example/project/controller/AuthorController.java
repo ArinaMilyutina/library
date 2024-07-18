@@ -1,6 +1,7 @@
 package com.example.project.controller;
 
 import com.example.project.dto.AuthorDto;
+import com.example.project.dto.UpdateAuthorDto;
 import com.example.project.entity.Author;
 import com.example.project.exception.NotFoundException;
 import com.example.project.service.AuthorService;
@@ -38,6 +39,12 @@ public class AuthorController {
     public ResponseEntity<Author> findAuthorById(@PathVariable Long id) throws NotFoundException {
         Optional<Author> author = authorService.findById(id);
         return ResponseEntity.of(author);
+    }
+
+    @PutMapping("/{authorId}")  // Используйте @PutMapping для метода обновления
+    public ResponseEntity<Author> updateAuthor(@PathVariable Long authorId, @Valid @RequestBody UpdateAuthorDto authorDto) throws NotFoundException {
+        Author updatedAuthor = authorService.updateAuthor(authorId, authorDto);
+        return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
     }
 
 }
