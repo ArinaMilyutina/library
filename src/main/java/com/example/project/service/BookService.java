@@ -5,7 +5,6 @@ import com.example.project.dto.BookDto;
 import com.example.project.dto.UpdateBookDto;
 import com.example.project.entity.Author;
 import com.example.project.entity.Book;
-import com.example.project.exception.AuthorNotFoundException;
 import com.example.project.exception.NotFoundException;
 import com.example.project.repository.AuthorRepository;
 import com.example.project.repository.BookRepository;
@@ -48,7 +47,7 @@ public class BookService {
     }
 
 
-    public Book updateBook(Long bookId, UpdateBookDto bookDto) throws NotFoundException, AuthorNotFoundException {
+    public Book updateBook(Long bookId, UpdateBookDto bookDto) throws NotFoundException {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("The book with this id was not found."));
         AuthorDto authorDto = bookDto.getAuthorDto();
         Author author = book.getAuthor();
@@ -72,11 +71,11 @@ public class BookService {
     }
 
 
-        public List<Book> findByAuthorId (Long authorId) throws NotFoundException {
-        if(authorRepository.findById(authorId).isEmpty()){
+    public List<Book> findByAuthorId(Long authorId) throws NotFoundException {
+        if (authorRepository.findById(authorId).isEmpty()) {
             throw new NotFoundException("Author not found.");
         }
-            return bookRepository.findByAuthorId(authorId);
-        }
+        return bookRepository.findByAuthorId(authorId);
+    }
 }
 

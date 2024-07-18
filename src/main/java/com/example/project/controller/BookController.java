@@ -3,7 +3,6 @@ package com.example.project.controller;
 import com.example.project.dto.BookDto;
 import com.example.project.dto.UpdateBookDto;
 import com.example.project.entity.Book;
-import com.example.project.exception.AuthorNotFoundException;
 import com.example.project.exception.NotFoundException;
 import com.example.project.service.BookService;
 import jakarta.validation.Valid;
@@ -43,7 +42,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody UpdateBookDto bookDto) throws NotFoundException, AuthorNotFoundException {
+    public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody UpdateBookDto bookDto) throws NotFoundException {
         Book updateBook = bookService.updateBook(id, bookDto);
         return ResponseEntity.ok(updateBook);
     }
@@ -54,9 +53,10 @@ public class BookController {
         return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK);
 
     }
+
     @GetMapping("/author/{id}")
-    public ResponseEntity<List<Book>>findBookByIdAuthor(@PathVariable Long id) {
-        List<Book>books=bookService.findByAuthorId(id);
-        return new ResponseEntity<>(books,HttpStatus.OK);
+    public ResponseEntity<List<Book>> findBookByIdAuthor(@PathVariable Long id) throws NotFoundException {
+        List<Book> books = bookService.findByAuthorId(id);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 }
