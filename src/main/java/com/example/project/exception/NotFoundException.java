@@ -1,7 +1,7 @@
 package com.example.project.exception;
 
-public class NotFoundException extends Throwable {
-    public NotFoundException(String message){
+public class NotFoundException extends Exception {
+    public NotFoundException(String message) {
         super(message);
     }
 }

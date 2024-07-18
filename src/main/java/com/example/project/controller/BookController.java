@@ -54,4 +54,9 @@ public class BookController {
         return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK);
 
     }
+    @GetMapping("/author/{id}")
+    public ResponseEntity<List<Book>>findBookByIdAuthor(@PathVariable Long id) {
+        List<Book>books=bookService.findByAuthorId(id);
+        return new ResponseEntity<>(books,HttpStatus.OK);
+    }
 }
