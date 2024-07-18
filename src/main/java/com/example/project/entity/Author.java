@@ -1,5 +1,7 @@
 package com.example.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,5 +23,6 @@ public class Author extends AbstractEntity {
     private String surname;
     private LocalDate birthDate;
     @OneToMany(mappedBy = "author",cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
     private List<Book> books;
 }
