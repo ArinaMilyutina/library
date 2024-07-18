@@ -19,6 +19,7 @@ import java.util.Optional;
 @RequestMapping("/api/books")
 @Validated
 public class BookController {
+    private static final String BOOK_DELETE = "Book deleted successfully.";
     @Autowired
     private BookService bookService;
 
@@ -50,7 +51,7 @@ public class BookController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable Long id) throws NotFoundException {
         bookService.deleteBook(id);
-        return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>(BOOK_DELETE, HttpStatus.OK);
 
     }
 

@@ -19,6 +19,8 @@ import java.util.Optional;
 @RequestMapping("/api/authors")
 @Validated
 public class AuthorController {
+    private static final String AUTHOR_DELETE = "Author deleted successfully.";
+
     @Autowired
     private AuthorService authorService;
 
@@ -50,7 +52,7 @@ public class AuthorController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAuthor(@PathVariable Long id) throws NotFoundException {
         authorService.deleteAuthor(id);
-        return new ResponseEntity<>("Author deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>(AUTHOR_DELETE, HttpStatus.OK);
 
     }
 
