@@ -70,7 +70,10 @@ public class AuthorService {
         }
     }
 
-    private void deleteAuthor(Long authorId) {
+    public void deleteAuthor(Long authorId) throws NotFoundException {
+        if (!authorRepository.existsById(authorId)) {
+            throw new NotFoundException("Book not found.");
+        }
         authorRepository.deleteById(authorId);
     }
 }

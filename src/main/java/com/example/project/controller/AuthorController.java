@@ -41,10 +41,17 @@ public class AuthorController {
         return ResponseEntity.of(author);
     }
 
-    @PutMapping("/{authorId}")  // Используйте @PutMapping для метода обновления
-    public ResponseEntity<Author> updateAuthor(@PathVariable Long authorId, @Valid @RequestBody UpdateAuthorDto authorDto) throws NotFoundException {
-        Author updatedAuthor = authorService.updateAuthor(authorId, authorDto);
+    @PutMapping("/{id}")
+    public ResponseEntity<Author> updateAuthor(@PathVariable Long id, @Valid @RequestBody UpdateAuthorDto authorDto) throws NotFoundException {
+        Author updatedAuthor = authorService.updateAuthor(id, authorDto);
         return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAuthor(@PathVariable Long id) throws NotFoundException {
+        authorService.deleteAuthor(id);
+        return new ResponseEntity<>("Author deleted successfully", HttpStatus.OK);
+
     }
 
 }
