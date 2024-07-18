@@ -23,8 +23,11 @@ Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring
    "surname": "Doe",
    "birthDate": "2004-12-12"
    }
-2. Поиск всех авторов (меиод: GET, URL:http://localhost:8080/api/authors)
+
+2. Поиск всех авторов (метод: GET, URL:http://localhost:8080/api/authors)
+
 3. Поиск автора по id (метод: GET, URL:http://localhost:8080/api/authors/{id})
+
 4. Обновление информации об авторе по id (метод: PUT, URL:http://localhost:8080/api/authors/{id})
    json:
    {
@@ -39,7 +42,9 @@ Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring
    }
    ]
    }
+
 5. Удаление автора по id (метод: DELETE, URL:http://localhost:8080/api/authors/{id})
+
 6. Создание книги по id автора (метод: POST, URL:http://localhost:8080/api/books)
    json:
    {
@@ -48,8 +53,11 @@ Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring
    "publicationDate":"2024-12-12",
    "authorId":4
    }
+
 7. Поиск всех книг (метод: GET, URL:http://localhost:8080/api/books)
+
 8. Поиск книги по id (метод: GET, URL: http://localhost:8080/api/authors/{id})
+
 9. Обновление информации о книге по id (метод: PUT, URL:http://localhost:8080/api/books/{id})
    json:
    {
@@ -63,7 +71,9 @@ Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring
    "birthDate":"1996-03-27"
    }
    }
+
 10. Удаление книги по id (метод: DELETE, URL:http://localhost:8080/api/books/{id})
+
 11. Поиск книг по id автора (метод: GET, URL:URL:http://localhost:8080/api/books/author/{id})
 
 
