@@ -21,10 +21,15 @@ Validation,Spring Boot Starter Web,Spring Boot Devtools,PostgreSQL,Lombok,Spring
 1. Создание автора (метод:POST, URL:http://localhost:8080/api/authors):
 
 json:
+
 {
+
 "name": "John",
+
 "surname": "Doe",
+
 "birthDate": "2004-12-12"
+
 }
 
 2. Поиск всех авторов (метод: GET, URL:http://localhost:8080/api/authors)
@@ -34,17 +39,29 @@ json:
 4. Обновление информации об авторе по id (метод: PUT, URL:http://localhost:8080/api/authors/{id})
 
 json:
+
 {
+
 "name": "Arina",
+
 "surname": "Milyutina",
+
 "birthDate": "2004-01-22",
+
 "bookList":[
+
 {
+
 "title":"Love",
+
 "genre":"Romantic",
+
 "publicationDate":"2024-12-12"
+
 }
+
 ]
+
 }
 
 5. Удаление автора по id (метод: DELETE, URL:http://localhost:8080/api/authors/{id})
@@ -52,11 +69,17 @@ json:
 6. Создание книги по id автора (метод: POST, URL:http://localhost:8080/api/books)
 
 json:
+
 {
+
 "title":"Love",
+
 "genre":"Romantic",
+
 "publicationDate":"2024-12-12",
+
 "authorId":4
+
 }
 
 7. Поиск всех книг (метод: GET, URL:http://localhost:8080/api/books)
@@ -66,16 +89,27 @@ json:
 9. Обновление информации о книге по id (метод: PUT, URL:http://localhost:8080/api/books/{id})
 
 json:
+
 {
+
 "title":"Love",
+
 "genre":"Romantic",
+
 "publicationDate":"2024-12-12",
+
 "authorDto":
+
 {
+
 "name":"Sasha",
+
 "surname":"Milyutin",
+
 "birthDate":"1996-03-27"
+
 }
+
 }
 
 10. Удаление книги по id (метод: DELETE, URL:http://localhost:8080/api/books/{id})
