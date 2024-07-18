@@ -25,13 +25,13 @@ public class AuthorService {
 
     }
 
-//    public List<Author> findAll() throws NotFoundException {
-//        List<Author> authorList = authorRepository.findAll();
-//        if (authorList.isEmpty()) {
-//            throw new NotFoundException("There are no authors.");
-//        }
-//        return authorRepository.findAll();
-//    }
+    public List<Author> findAll() throws NotFoundException {
+        List<Author> authorList = authorRepository.findAll();
+        if (authorList.isEmpty()) {
+            throw new NotFoundException("There are no authors.");
+        }
+        return authorRepository.findAll();
+    }
 
     public Optional<Author> findById(Long authorId) {
         return authorRepository.findById(authorId);

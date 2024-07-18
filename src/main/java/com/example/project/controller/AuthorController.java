@@ -28,6 +28,10 @@ public class AuthorController {
     }
 
 
-
+    @GetMapping
+    public ResponseEntity<List<Author>> findAllAuthors() throws NotFoundException {
+        List<Author> authors = authorService.findAll();
+        return ResponseEntity.of(Optional.ofNullable(authors));
+    }
 
 }
