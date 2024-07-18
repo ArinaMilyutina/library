@@ -1,7 +1,6 @@
 package com.example.project.dto;
 
 
-import com.example.project.entity.Author;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,11 +16,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDto {
-    @NotBlank (message = "Title is mandatory.")
-    @Size(max = 255,message = "Title must be less than 255 characters.")
+    @NotBlank(message = "Title is mandatory.")
+    @Size(max = 255, message = "Title must be less than 255 characters.")
     private String title;
-    @NotBlank (message = "Genre is mandatory.")
-    @Size(max = 100,message = "Genre must be less than 100 characters.")
+    @NotBlank(message = "Genre is mandatory.")
+    @Size(max = 100, message = "Genre must be less than 100 characters.")
     private String genre;
     @NotNull(message = "Publication date is mandatory.")
     private LocalDate publicationDate;
