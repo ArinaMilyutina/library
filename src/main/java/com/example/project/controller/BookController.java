@@ -23,7 +23,7 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping
-    public ResponseEntity<Book> addBook(@Valid @RequestBody BookDto bookDto) {
+    public ResponseEntity<Book> addBook(@Valid @RequestBody BookDto bookDto) throws NotFoundException {
         Book newBook = bookService.createdBook(bookDto);
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }

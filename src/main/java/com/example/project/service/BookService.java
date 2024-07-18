@@ -22,8 +22,8 @@ public class BookService {
     private AuthorRepository authorRepository;
 
 
-    public Book createdBook(BookDto bookDto) {
-        Author author = authorRepository.findById(bookDto.getAuthorId()).orElseThrow(() -> new RuntimeException("Author not found"));
+    public Book createdBook(BookDto bookDto) throws NotFoundException {
+        Author author = authorRepository.findById(bookDto.getAuthorId()).orElseThrow(() -> new NotFoundException("Author not found"));
         Book book = Book.builder()
                 .title(bookDto.getTitle())
                 .genre(bookDto.getGenre())
