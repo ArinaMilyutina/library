@@ -20,10 +20,12 @@ public class BookService {
     private BookRepository bookRepository;
     @Autowired
     private AuthorRepository authorRepository;
+    private static final String AUTHOR_NOT_FOUND = "Author not found.";
+    private static final String BOOK_NOT_FOUND = "Book not found.";
 
 
     public Book createdBook(BookDto bookDto) throws NotFoundException {
-        Author author = authorRepository.findById(bookDto.getAuthorId()).orElseThrow(() -> new NotFoundException("Author not found"));
+        Author author = authorRepository.findById(bookDto.getAuthorId()).orElseThrow(() -> new NotFoundException(AUTHOR_NOT_FOUND));
         Book book = Book.builder()
                 .title(bookDto.getTitle())
                 .genre(bookDto.getGenre())
@@ -37,18 +39,18 @@ public class BookService {
     public List<Book> findAll() throws NotFoundException {
         List<Book> books = bookRepository.findAll();
         if (books.isEmpty()) {
-            throw new NotFoundException("There are no books.");
+            throw new NotFoundException(BOOK_NOT_FOUND);
         }
         return books;
     }
 
     public Optional<Book> findBookById(Long bookId) throws NotFoundException {
-        return Optional.ofNullable(bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("The book with this id was not found.")));
+        return Optional.ofNullable(bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND)));
     }
 
 
     public Book updateBook(Long bookId, UpdateBookDto bookDto) throws NotFoundException {
-        Book book = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("The book with this id was not found."));
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND));
         AuthorDto authorDto = bookDto.getAuthorDto();
         Author author = book.getAuthor();
         author.setName(authorDto.getName());
@@ -65,7 +67,7 @@ public class BookService {
 
     public void deleteBook(Long bookId) throws NotFoundException {
         if (!bookRepository.existsById(bookId)) {
-            throw new NotFoundException("Book not found.");
+            throw new NotFoundException(BOOK_NOT_FOUND);
         }
         bookRepository.deleteById(bookId);
     }
@@ -73,7 +75,7 @@ public class BookService {
 
     public List<Book> findByAuthorId(Long authorId) throws NotFoundException {
         if (authorRepository.findById(authorId).isEmpty()) {
-            throw new NotFoundException("Author not found.");
+            throw new NotFoundException(AUTHOR_NOT_FOUND);
         }
         return bookRepository.findByAuthorId(authorId);
     }

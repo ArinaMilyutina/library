@@ -20,6 +20,7 @@ public class AuthorService {
     private AuthorRepository authorRepository;
     @Autowired
     private BookRepository bookRepository;
+    private static final String AUTHOR_NOT_FOUND = "Author not found.";
 
     public Author createdAuthor(AuthorDto authorDto) {
         Author author = Author.builder()
@@ -34,13 +35,13 @@ public class AuthorService {
     public List<Author> findAll() throws NotFoundException {
         List<Author> authorList = authorRepository.findAll();
         if (authorList.isEmpty()) {
-            throw new NotFoundException("There are no authors.");
+            throw new NotFoundException(AUTHOR_NOT_FOUND);
         }
         return authorRepository.findAll();
     }
 
     public Optional<Author> findById(Long authorId) throws NotFoundException {
-        return Optional.ofNullable(authorRepository.findById(authorId).orElseThrow(() -> new NotFoundException("Author not found.")));
+        return Optional.ofNullable(authorRepository.findById(authorId).orElseThrow(() -> new NotFoundException(AUTHOR_NOT_FOUND)));
     }
 
     public Author updateAuthor(Long authorId, UpdateAuthorDto updateAuthorDto) throws NotFoundException {
@@ -66,13 +67,13 @@ public class AuthorService {
             author = authorRepository.save(author);
             return author;
         } else {
-            throw new NotFoundException("Author not found with id: " + authorId);
+            throw new NotFoundException(AUTHOR_NOT_FOUND);
         }
     }
 
     public void deleteAuthor(Long authorId) throws NotFoundException {
         if (!authorRepository.existsById(authorId)) {
-            throw new NotFoundException("Book not found.");
+            throw new NotFoundException(AUTHOR_NOT_FOUND);
         }
         authorRepository.deleteById(authorId);
     }
