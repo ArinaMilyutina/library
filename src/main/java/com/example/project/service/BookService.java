@@ -22,6 +22,7 @@ public class BookService {
     @Autowired
     private AuthorRepository authorRepository;
 
+
     public Book createdBook(BookDto bookDto) {
         Author author = authorRepository.findById(bookDto.getAuthorId()).orElseThrow(() -> new RuntimeException("Author not found"));
         Book book = Book.builder()
@@ -63,16 +64,18 @@ public class BookService {
     }
 
 
-    public boolean deleteBook(Long bookId) throws NotFoundException {
+    public void deleteBook(Long bookId) throws NotFoundException {
         if (!bookRepository.existsById(bookId)) {
             throw new NotFoundException("Book not found.");
         }
         bookRepository.deleteById(bookId);
-        return false;
     }
 
 
-        public List<Book> findByAuthorId (Long authorId){
+        public List<Book> findByAuthorId (Long authorId) throws NotFoundException {
+        if(authorRepository.findById(authorId).isEmpty()){
+            throw new NotFoundException("Author not found.");
+        }
             return bookRepository.findByAuthorId(authorId);
         }
 }
